@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mutterblack.Core", "src\Mutterblack.Core\Mutterblack.Core.csproj", "{E4B3ECD2-F63F-4777-9A73-44343009FE23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{53F4632F-B3EE-46EC-AA21-A903870C1A7C}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.Props = Directory.Build.Props
+		Dockerfile = Dockerfile
+		Dockerfile.debug = Dockerfile.debug
+		init-migrate.bat = init-migrate.bat
+		init-update.bat = init-update.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7605D5A4-4094-48AB-97B3-D5D784B0DFBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mutterblack.Data", "src\Mutterblack.Data\Mutterblack.Data.csproj", "{FE6A7138-6560-4906-BB24-02F30E1B0A56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mutterblack.Cache", "src\Mutterblack.Cache\Mutterblack.Cache.csproj", "{0D55C094-CA71-49DC-BDBF-4C8EB00CB080}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4B3ECD2-F63F-4777-9A73-44343009FE23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B3ECD2-F63F-4777-9A73-44343009FE23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B3ECD2-F63F-4777-9A73-44343009FE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B3ECD2-F63F-4777-9A73-44343009FE23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6A7138-6560-4906-BB24-02F30E1B0A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6A7138-6560-4906-BB24-02F30E1B0A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6A7138-6560-4906-BB24-02F30E1B0A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6A7138-6560-4906-BB24-02F30E1B0A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D55C094-CA71-49DC-BDBF-4C8EB00CB080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D55C094-CA71-49DC-BDBF-4C8EB00CB080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D55C094-CA71-49DC-BDBF-4C8EB00CB080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D55C094-CA71-49DC-BDBF-4C8EB00CB080}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4B3ECD2-F63F-4777-9A73-44343009FE23} = {7605D5A4-4094-48AB-97B3-D5D784B0DFBD}
+		{FE6A7138-6560-4906-BB24-02F30E1B0A56} = {7605D5A4-4094-48AB-97B3-D5D784B0DFBD}
+		{0D55C094-CA71-49DC-BDBF-4C8EB00CB080} = {7605D5A4-4094-48AB-97B3-D5D784B0DFBD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F3E6155-077C-40EF-9A3E-C19155D19572}
+	EndGlobalSection
+EndGlobal
