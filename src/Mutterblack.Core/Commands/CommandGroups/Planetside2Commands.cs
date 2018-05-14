@@ -14,24 +14,21 @@ namespace Mutterblack.Core.Commands.CommandGroups
         }
 
         [CommandGroupAction("character")]
-        public async Task<CommandResult> GetCharacter(string characterName)
+        public Task<CommandResult> GetCharacter(string characterName)
         {
-            var result = await _voidwellClient.GetCharacterStatsByName(characterName);
-            return new CommandResult(result);
+            return _voidwellClient.GetCharacterStatsByName(characterName);
         }
 
         [CommandGroupAction("character-weapon")]
-        public async Task<CommandResult> GetCharacterWeapon(string characterName, string weaponName)
+        public Task<CommandResult> GetCharacterWeapon(string characterName, string weaponName)
         {
-            var result = await _voidwellClient.GetCharacterWeaponStatsByName(characterName, weaponName);
-            return new CommandResult(result);
+            return _voidwellClient.GetCharacterWeaponStatsByName(characterName, weaponName);
         }
 
         [CommandGroupAction("outfit")]
-        public async Task<CommandResult> GetOutfit(string outfitAlias)
+        public Task<CommandResult> GetOutfit(string outfitAlias)
         {
-            var result = await _voidwellClient.GetOutfitStatsByAlias(outfitAlias);
-            return new CommandResult(result);
+            return _voidwellClient.GetOutfitStatsByAlias(outfitAlias);
         }
     }
 }

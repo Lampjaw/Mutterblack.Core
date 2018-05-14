@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using Microsoft.Extensions.Options;
 using Mutterblack.Core.Clients.Models;
+using System.Collections.Generic;
 
 namespace Mutterblack.Core.Clients
 {
@@ -34,6 +35,27 @@ namespace Mutterblack.Core.Clients
                 City = locationToken.Value<string>("city"),
                 Condition = conditionToken.Value<string>("text"),
                 Temperature = conditionToken.Value<int>("temp")
+            };
+        }
+
+        public async Task<ForecastWeather> GetForecastWeatherByLocation(string location)
+        {
+            var url = $"v1/public/yql?q=select location, item from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"{location}\")&format=json";
+            var response = await _httpClient.GetAsync(url);
+            var result = await response.GetContentAsync<JToken>();
+
+            var channelToken = result.SelectToken("query.results.channel");
+            var locationToken = channelToken.SelectToken("location");
+            var forecastToken = channelToken.SelectToken("item.forecast");
+
+            var forecasts = forecastToken.ToObject<IEnumerable<WeatherDay>>();
+
+            return new ForecastWeather
+            {
+                Country = locationToken.Value<string>("country"),
+                Region = locationToken.Value<string>("region"),
+                City = locationToken.Value<string>("city"),
+                Forecast = forecasts
             };
         }
 

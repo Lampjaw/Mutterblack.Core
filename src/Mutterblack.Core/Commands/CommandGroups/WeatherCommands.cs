@@ -19,5 +19,12 @@ namespace Mutterblack.Core.Commands.CommandGroups
             var result = await _weatherClient.GetWeatherByLocation(location);
             return new CommandResult(result);
         }
+
+        [CommandGroupAction("forecast")]
+        public async Task<CommandResult> GetForecastWeather(string location)
+        {
+            var result = await _weatherClient.GetForecastWeatherByLocation(location);
+            return new CommandResult(result);
+        }
     }
 }

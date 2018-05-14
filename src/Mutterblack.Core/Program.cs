@@ -22,6 +22,7 @@ namespace Mutterblack.Core
                     builder.AddFilter("Microsoft.EntityFrameworkCore", LogLevel.Error);
                     builder.AddFilter("Microsoft.EntityFrameworkCore.Update", LogLevel.None);
                     builder.AddFilter("Microsoft.EntityframeworkCore.Database.Command", LogLevel.None);
+                    builder.AddFilter("Microsoft.AspNetCore.Hosting.Internal.WebHost", LogLevel.Warning);
                     builder.AddDebug();
                 })
                 .Build();
