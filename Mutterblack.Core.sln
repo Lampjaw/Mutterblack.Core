@@ -15,13 +15,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Dockerfile.debug = Dockerfile.debug
 		init-migrate.bat = init-migrate.bat
 		init-update.bat = init-update.bat
+		new-build.sh = new-build.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7605D5A4-4094-48AB-97B3-D5D784B0DFBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mutterblack.Data", "src\Mutterblack.Data\Mutterblack.Data.csproj", "{FE6A7138-6560-4906-BB24-02F30E1B0A56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mutterblack.Data", "src\Mutterblack.Data\Mutterblack.Data.csproj", "{FE6A7138-6560-4906-BB24-02F30E1B0A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mutterblack.Cache", "src\Mutterblack.Cache\Mutterblack.Cache.csproj", "{0D55C094-CA71-49DC-BDBF-4C8EB00CB080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mutterblack.Cache", "src\Mutterblack.Cache\Mutterblack.Cache.csproj", "{0D55C094-CA71-49DC-BDBF-4C8EB00CB080}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
