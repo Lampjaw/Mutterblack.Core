@@ -7,7 +7,7 @@ namespace Mutterblack.Core
 {
     public static class HttpResponseMessageExtensions
     {
-        public static async Task<T> GetContentAsync<T>(this HttpResponseMessage response)
+        public static async Task<T> GetContentAsync<T>(this HttpResponseMessage response, JsonSerializerSettings serializerSettings = null)
         {
             if (!response.IsSuccessStatusCode)
             {
@@ -26,6 +26,12 @@ namespace Mutterblack.Core
             }
 
             var serializedString = await response.Content.ReadAsStringAsync();
+
+            if (serializerSettings != null)
+            {
+                return JsonConvert.DeserializeObject<T>(serializedString, serializerSettings);
+            }
+
             return JsonConvert.DeserializeObject<T>(serializedString);
         }
     }

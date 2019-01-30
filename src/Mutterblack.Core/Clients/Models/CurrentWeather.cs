@@ -7,5 +7,10 @@
         public string Region { get; set; }
         public int Temperature { get; set; }
         public string Condition { get; set; }
+        public int Humidity { get; set; }
+        public int WindChill { get; set; }
+        public double WindSpeed { get; set; }
+        public int ForecastHigh { get; set; }
+        public int ForecastLow { get; set; }
     }
 }
