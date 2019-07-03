@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace Mutterblack.Core.Commands
 {
@@ -67,7 +68,9 @@ namespace Mutterblack.Core.Commands
 
             try
             {
-                return await (Task<CommandResult>)commandAction.Invoke(commandGroupInstance, commandArgValues.ToArray());
+                var args = commandArgValues.ToArray();
+                _logger.LogInformation(10000, "Executing {0} - {1}: {2}", commandGroupName, commandActionName, JToken.FromObject(args).ToString());
+                return await (Task<CommandResult>)commandAction.Invoke(commandGroupInstance, args);
             }
             catch (ClientResponseException ex)
             {
