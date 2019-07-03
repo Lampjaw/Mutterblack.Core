@@ -18,9 +18,9 @@ namespace Mutterblack.Core.Clients
             _httpClient.BaseAddress = new Uri(Constants.Endpoints.VoidwellApi);
         }
 
-        public async Task<CommandResult> GetCharacterStatsByName(string characterName)
+        public async Task<CommandResult> GetCharacterStatsByName(string characterName, string platform)
         {
-            var response = await _httpClient.GetAsync($"ps2/character/byname/{characterName}");
+            var response = await _httpClient.GetAsync($"ps2/character/byname/{characterName}?platform={platform}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -34,9 +34,9 @@ namespace Mutterblack.Core.Clients
             return new CommandResult(result);
         }
 
-        public async Task<CommandResult> GetCharacterWeaponStatsByName(string characterName, string weaponName)
+        public async Task<CommandResult> GetCharacterWeaponStatsByName(string characterName, string weaponName, string platform)
         {
-            var response = await _httpClient.GetAsync($"ps2/character/byname/{characterName}/weapon/{weaponName}");
+            var response = await _httpClient.GetAsync($"ps2/character/byname/{characterName}/weapon/{weaponName}?platform={platform}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -50,9 +50,9 @@ namespace Mutterblack.Core.Clients
             return new CommandResult(result);
         }
 
-        public async Task<CommandResult> GetOutfitStatsByAlias(string outfitAlias)
+        public async Task<CommandResult> GetOutfitStatsByAlias(string outfitAlias, string platform)
         {
-            var response = await _httpClient.GetAsync($"ps2/outfit/byalias/{outfitAlias}");
+            var response = await _httpClient.GetAsync($"ps2/outfit/byalias/{outfitAlias}?platform={platform}");
 
             if (!response.IsSuccessStatusCode)
             {
