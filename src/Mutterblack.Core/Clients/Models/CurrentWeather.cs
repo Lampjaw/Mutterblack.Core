@@ -12,5 +12,6 @@
         public double WindSpeed { get; set; }
         public int ForecastHigh { get; set; }
         public int ForecastLow { get; set; }
+        public int HeatIndex { get; set; }
     }
 }

@@ -48,18 +48,23 @@ namespace Mutterblack.Core.Clients
 
             var currentDay = result.Forecasts.FirstOrDefault();
 
+            var temp = result.CurrentObservation.Condition.Temperature;
+            var humidity = result.CurrentObservation.Atmosphere.Humidity;
+            var heatIndex = CalculateHeatIndex(temp, humidity);
+
             return new CurrentWeather
             {
                 Country = result.Location.Country,
                 Region = result.Location.Region,
                 City = result.Location.City,
                 Condition = result.CurrentObservation.Condition.Text,
-                Temperature = result.CurrentObservation.Condition.Temperature,
-                Humidity = result.CurrentObservation.Atmosphere.Humidity,
+                Temperature = temp,
+                Humidity = humidity,
                 WindChill = result.CurrentObservation.Wind.Chill,
                 WindSpeed = result.CurrentObservation.Wind.Speed,
                 ForecastHigh = currentDay.High,
                 ForecastLow = currentDay.Low,
+                HeatIndex = (int)heatIndex
             };
         }
 
@@ -87,6 +92,33 @@ namespace Mutterblack.Core.Clients
 
             var response = await _httpClient.GetAsync(url, cancellationToken, locationParam);
             return await response.GetContentAsync<YahooWeatherResponse>(_serializerSettings);
+        }
+
+        private double CalculateHeatIndex(int temperature, int humidity)
+        {
+            var heatIndex = 0.5 * (temperature + 61.0 + ((temperature - 68.0) * 1.2) + (humidity * 0.094));
+
+            if (heatIndex < 80)
+            {
+                return heatIndex;
+            }
+
+            heatIndex = -42.379 + 2.04901523 * temperature + 10.14333127 * humidity - .22475541 * temperature
+                * humidity - .00683783 * temperature * temperature - .05481717 * humidity * humidity + .00122874
+                * temperature * temperature * humidity + .00085282 * temperature * humidity * humidity - .00000199
+                * temperature * temperature * humidity * humidity;
+
+            if (humidity < 13 && temperature >= 80 && temperature <= 112)
+            {
+                heatIndex -= ((13 - humidity) / 4) * Math.Sqrt((17 - Math.Abs(temperature - 95)) / 17);
+            }
+
+            if (humidity > 85 && temperature >= 80 && temperature <= 87)
+            {
+                heatIndex += ((humidity - 85) / 10) * ((87 - temperature) / 5);
+            }
+
+            return heatIndex;
         }
 
         public void Dispose()
